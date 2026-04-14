@@ -12,7 +12,7 @@ gmazzoBuildConfig = "6.0.9"
 androidCompileSdk = "36"
 androidMinSdk = "26"
 androidTargetSdk = "36"
-# Should be synced with gradle/gradle-daemon-jvm.properties
+# Should be synced with gradle/gradle-daemon-jvm.properties which can be updated with ./gradlew updateDaemonJvm --jvm-version=25
 jvm-toolchain = "25"
 jvm-compat = "17"
 
