@@ -1,0 +1,50 @@
+[versions]
+agp = "9.1.1"
+junit = "4.13.2"
+activityCompose = "1.13.0"
+kotlin = "2.3.20"
+googleDevtoolsKsp = "2.3.6"
+kotlinxCoroutinesTest = "1.10.2"
+composeMultiplatform = "1.10.3"
+composeMaterial3 = "1.9.0"
+composeMaterialIconsExtended = "1.7.3"
+gmazzoBuildConfig = "6.0.9"
+androidCompileSdk = "36"
+androidMinSdk = "26"
+androidTargetSdk = "36"
+# Should be synced with gradle/gradle-daemon-jvm.properties
+jvm-toolchain = "25"
+jvm-compat = "17"
+
+ktfmt = "0.26.0"
+sort-dependencies = "0.16"
+
+[libraries]
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "composeMultiplatform" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "composeMaterial3" }
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "composeMultiplatform" }
+compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
+compose-components-uiToolingPreview = { module = "org.jetbrains.compose.components:components-ui-tooling-preview", version.ref = "composeMultiplatform" }
+compose-materialIconsExtended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "composeMaterialIconsExtended" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+android-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "googleDevtoolsKsp" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+gmazzo-buildconfig = { id = "com.github.gmazzo.buildconfig", version.ref = "gmazzoBuildConfig" }
+plugin-publish = { id = "com.gradle.plugin-publish", version = "2.1.1" }
+publish = { id = "com.vanniktech.maven.publish", version = "0.36.0" }
+
+ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
+sort-dependencies = { id = "com.squareup.sort-dependencies", version.ref = "sort-dependencies" }
