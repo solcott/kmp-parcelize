@@ -10,6 +10,7 @@ plugins {
   alias(libs.plugins.compose.multiplatform)
   alias(libs.plugins.kotlin.compose)
   id("io.github.solcott.kmp.parcelize")
+  alias(libs.plugins.sort.dependencies)
 }
 
 kotlin {

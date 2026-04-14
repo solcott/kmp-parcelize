@@ -19,7 +19,6 @@ val sortDependenciesPlugin: String = libs.plugins.sort.dependencies.get().plugin
 
 allprojects {
   apply(plugin = ktfmtPlugin)
-  apply(plugin = sortDependenciesPlugin)
   extensions.configure<KtfmtExtension> {
     googleStyle()
     removeUnusedImports = true

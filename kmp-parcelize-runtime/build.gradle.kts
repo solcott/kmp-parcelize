@@ -9,6 +9,7 @@ plugins {
   id("kmp-targets")
   alias(libs.plugins.kotlin.parcelize)
   alias(libs.plugins.publish)
+  alias(libs.plugins.sort.dependencies)
 }
 
 kotlin {
