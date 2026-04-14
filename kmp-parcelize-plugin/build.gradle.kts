@@ -1,3 +1,7 @@
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+
 plugins {
   `kotlin-dsl`
   id("java-gradle-plugin")
@@ -16,6 +20,27 @@ repositories {
   google()
   mavenCentral()
   gradlePluginPortal()
+}
+
+val compatVersion: String = libs.versions.jvm.compat.get()
+
+tasks.withType<KotlinJvmCompile>().configureEach {
+  compilerOptions {
+    jvmTarget.set(JvmTarget.fromTarget(compatVersion))
+
+    // Highly recommended: Prevents you from accidentally using standard
+    // library APIs from Java 18+ that don't exist in Java 17.
+    freeCompilerArgs.add("-Xjdk-release=$compatVersion")
+  }
+}
+
+// For pure Java source files in the module
+tasks.withType<JavaCompile>().configureEach {
+  // 'release' is the modern replacement for sourceCompatibility/targetCompatibility.
+  // It guarantees both bytecode version AND standard library API bounds.
+  //  options.release.set(compatVersion.toInt())
+  sourceCompatibility = compatVersion
+  targetCompatibility = compatVersion
 }
 
 buildConfig {
