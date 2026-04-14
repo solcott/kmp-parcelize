@@ -43,6 +43,36 @@ gradlePlugin {
   }
 }
 
+mavenPublishing {
+  publishToMavenCentral()
+
+  signAllPublications()
+
+  coordinates(group.toString(), "kmp-parcelize-plugin", version.toString())
+  pom {
+    name.set("KMP Parcelize Plugin")
+    description.set("A Gradle plugin to configure Kotlin parcelize for KMP")
+    url.set("https://github.com/solcott/kmp-parcelize")
+    licenses {
+      license {
+        name.set("The Apache License, Version 2.0")
+        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+      }
+    }
+    developers {
+      developer {
+        id.set("solcott")
+        name.set("Scott Olcott")
+      }
+    }
+    scm {
+      connection.set("scm:git:git://github.com/solcott/kmp-parcelize.git")
+      developerConnection.set("scm:git:ssh://github.com/solcott/kmp-parcelize.git")
+      url.set("https://github.com/solcott/kmp-parcelize")
+    }
+  }
+}
+
 ktfmt {
   googleStyle()
   removeUnusedImports = true
