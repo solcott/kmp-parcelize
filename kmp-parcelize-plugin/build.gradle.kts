@@ -50,7 +50,7 @@ buildConfig {
 }
 
 dependencies {
-  compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:${libs.versions.kotlin.get()}")
+  compileOnly(libs.kotlin.gradle.plugin)
 }
 
 gradlePlugin {

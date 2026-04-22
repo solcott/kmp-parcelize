@@ -1,5 +1,5 @@
 [versions]
-agp = "9.1.1"
+agp = "9.2.0"
 junit = "4.13.2"
 activityCompose = "1.13.0"
 kotlin = "2.3.20"
@@ -9,7 +9,7 @@ composeMultiplatform = "1.10.3"
 composeMaterial3 = "1.9.0"
 composeMaterialIconsExtended = "1.7.3"
 gmazzoBuildConfig = "6.0.9"
-androidCompileSdk = "36"
+androidCompileSdk = "37"
 androidMinSdk = "26"
 androidTargetSdk = "36"
 # Should be synced with gradle/gradle-daemon-jvm.properties which can be updated with ./gradlew updateDaemonJvm --jvm-version=25
