@@ -6,13 +6,17 @@
   "packageRules": [
     {
       "description": "Group Kotlin-related updates together",
-      "matchPackagePatterns": ["^org.jetbrains.kotlin"],
-      "groupName": "Kotlin"
+      "groupName": "Kotlin",
+      "matchPackageNames": [
+        "/^org.jetbrains.kotlin/"
+      ]
     },
     {
       "description": "Group Compose Multiplatform updates together",
-      "matchPackagePatterns": ["^org.jetbrains.compose"],
-      "groupName": "Compose Multiplatform"
+      "groupName": "Compose Multiplatform",
+      "matchPackageNames": [
+        "/^org.jetbrains.compose/"
+      ]
     }
   ]
 }
