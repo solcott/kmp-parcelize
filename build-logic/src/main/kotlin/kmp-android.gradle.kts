@@ -1,6 +1,4 @@
-import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 plugins {
   id("org.jetbrains.kotlin.multiplatform")
@@ -9,7 +7,7 @@ plugins {
 
 val libs: VersionCatalog = the<VersionCatalogsExtension>().named("libs")
 
-extensions.configure<KotlinMultiplatformExtension> {
+kotlin {
   android {
     compileSdk = libs.findVersion("androidCompileSdk").get().requiredVersion.toInt()
     minSdk = libs.findVersion("androidMinSdk").get().requiredVersion.toInt()
