@@ -17,6 +17,15 @@
       "matchPackageNames": [
         "/^org.jetbrains.compose/"
       ]
+    },
+    {
+      "description": "Ignore Android Gradle Plugin marker lookups as they are handled by the library entry",
+      "matchPackageNames": [
+        "com.android.application:com.android.application.gradle.plugin",
+        "com.android.library:com.android.library.gradle.plugin",
+        "com.android.kotlin.multiplatform.library:com.android.kotlin.multiplatform.library.gradle.plugin"
+      ],
+      "enabled": false
     }
   ]
 }
