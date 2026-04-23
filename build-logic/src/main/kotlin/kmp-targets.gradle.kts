@@ -32,21 +32,10 @@ kotlin {
           withJs()
           withWasmJs()
         }
-      }
-    }
-
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
-    applyDefaultHierarchyTemplate {
-      common {
         group("commonJvm") {
           withJvm()
           @Suppress("UnstableApiUsage") withAndroid()
         }
-      }
-    }
-
-    applyDefaultHierarchyTemplate {
-      common {
         group("nonAndroid") {
           withJvm()
           withJs()
