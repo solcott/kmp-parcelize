@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
+@file:OptIn(ExperimentalKotlinGradlePluginApi::class, ExperimentalWasmDsl::class)
 
 import com.android.build.api.withAndroid
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
@@ -40,6 +40,7 @@ kotlin {
           withJvm()
           withJs()
           withWasmJs()
+          withWasmWasi()
           withNative()
         }
       }
