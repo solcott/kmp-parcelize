@@ -17,7 +17,7 @@ jvm-toolchain = "25"
 jvm-compat = "17"
 
 ktfmt = "0.26.0"
-sort-dependencies = "0.16"
+sort-dependencies = "0.17.1"
 
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
