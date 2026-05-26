@@ -24,3 +24,8 @@ allprojects {
     removeUnusedImports = true
   }
 }
+
+tasks.named<UpdateDaemonJvm>("updateDaemonJvm") {
+  languageVersion = JavaLanguageVersion.of(libs.versions.jvm.toolchain.get())
+  vendor.set(JvmVendorSpec.ADOPTIUM)
+}

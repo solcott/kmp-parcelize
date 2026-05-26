@@ -15,12 +15,10 @@ androidCompileSdk = "37"
 androidMinSdk = "26"
 #noinspection UnusedVersionCatalogEntry
 androidTargetSdk = "36"
-# Should be synced with gradle/gradle-daemon-jvm.properties which can be updated with ./gradlew updateDaemonJvm --jvm-version=25
 #noinspection UnusedVersionCatalogEntry
-jvm-toolchain = "25"
+jvm-toolchain = "25" # After updating run ./gradlew updateDaemonJvm
 #noinspection UnusedVersionCatalogEntry
 jvm-compat = "17"
-
 ktfmt = "0.26.0"
 sort-dependencies = "0.18.0"
 
