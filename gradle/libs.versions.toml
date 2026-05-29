@@ -9,13 +9,16 @@ composeMultiplatform = "1.11.0"
 composeMaterial3 = "1.9.0"
 composeMaterialIconsExtended = "1.7.3"
 gmazzoBuildConfig = "6.0.9"
+#noinspection UnusedVersionCatalogEntry
 androidCompileSdk = "37"
+#noinspection UnusedVersionCatalogEntry
 androidMinSdk = "26"
+#noinspection UnusedVersionCatalogEntry
 androidTargetSdk = "36"
-# Should be synced with gradle/gradle-daemon-jvm.properties which can be updated with ./gradlew updateDaemonJvm --jvm-version=25
-jvm-toolchain = "25"
+#noinspection UnusedVersionCatalogEntry
+jvm-toolchain = "25" # After updating run ./gradlew updateDaemonJvm
+#noinspection UnusedVersionCatalogEntry
 jvm-compat = "17"
-
 ktfmt = "0.26.0"
 sort-dependencies = "0.18.0"
 
