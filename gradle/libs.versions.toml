@@ -8,7 +8,7 @@ kotlinxCoroutinesTest = "1.11.0"
 composeMultiplatform = "1.11.1"
 composeMaterial3 = "1.9.0"
 composeMaterialIconsExtended = "1.7.3"
-gmazzoBuildConfig = "6.0.9"
+gmazzoBuildConfig = "6.0.10"
 #noinspection UnusedVersionCatalogEntry
 androidCompileSdk = "37"
 #noinspection UnusedVersionCatalogEntry
