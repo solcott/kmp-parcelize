@@ -2,7 +2,7 @@
 agp = "9.2.1"
 junit = "4.13.2"
 activityCompose = "1.13.0"
-kotlin = "2.3.21"
+kotlin = "2.4.0"
 googleDevtoolsKsp = "2.3.9"
 kotlinxCoroutinesTest = "1.11.0"
 composeMultiplatform = "1.11.1"
