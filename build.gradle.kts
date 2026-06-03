@@ -1,4 +1,8 @@
 import com.ncorti.ktfmt.gradle.KtfmtExtension
+import org.gradle.kotlin.dsl.configure
+import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnLockMismatchReport
+import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin
+import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -23,6 +27,13 @@ allprojects {
     googleStyle()
     removeUnusedImports = true
   }
+}
+
+// The JS yarn.lock records `fsevents` (a macOS-only optional dep of chokidar) when generated
+// on macOS, but Linux CI rewrites the lock to drop it. Report the mismatch as a warning instead
+// of failing the build so the lock stays portable across macOS dev machines and Linux CI.
+plugins.withType<YarnPlugin> {
+  with(the<YarnRootExtension>()) { yarnLockMismatchReport = YarnLockMismatchReport.WARNING }
 }
 
 tasks.named<UpdateDaemonJvm>("updateDaemonJvm") {

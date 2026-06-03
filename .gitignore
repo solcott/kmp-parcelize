@@ -21,3 +21,5 @@ local.properties
 # IntelliJ IDEA / Android Studio
 .idea/
 *.iml
+
+.DS_Store
