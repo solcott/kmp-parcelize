@@ -3,6 +3,7 @@ pluginManagement {
   repositories { gradlePluginPortal() }
 
   includeBuild("../build-settings-logic")
+  includeBuild("../build-logic")
 }
 
 plugins { id("kmpparcelizesettings") }

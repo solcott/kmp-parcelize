@@ -5,10 +5,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 plugins {
   `kotlin-dsl`
   id("java-gradle-plugin")
+  id("project-config")
   alias(libs.plugins.publish)
   alias(libs.plugins.plugin.publish)
   alias(libs.plugins.gmazzo.buildconfig)
-  alias(libs.plugins.ktfmt)
   alias(libs.plugins.sort.dependencies)
 }
 
@@ -49,9 +49,7 @@ buildConfig {
   buildConfigField("String", "kmpParcelizeGroup", "\"${project.group}\"")
 }
 
-dependencies {
-  compileOnly(libs.kotlin.gradle.plugin)
-}
+dependencies { compileOnly(libs.kotlin.gradle.plugin) }
 
 gradlePlugin {
   website.set("https://github.com/solcott/kmp-parcelize")
@@ -96,9 +94,4 @@ mavenPublishing {
       url.set("https://github.com/solcott/kmp-parcelize")
     }
   }
-}
-
-ktfmt {
-  googleStyle()
-  removeUnusedImports = true
 }

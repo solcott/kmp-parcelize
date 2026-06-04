@@ -1,5 +1,3 @@
-import com.ncorti.ktfmt.gradle.KtfmtExtension
-import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnLockMismatchReport
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension
@@ -13,20 +11,10 @@ plugins {
   alias(libs.plugins.kotlin.parcelize) apply false
   alias(libs.plugins.kotlin.compose) apply false
   alias(libs.plugins.google.devtools.ksp) apply false
-  alias(libs.plugins.ktfmt)
   alias(libs.plugins.sort.dependencies)
   alias(libs.plugins.publish) apply false
-}
-
-val ktfmtPlugin: String = libs.plugins.ktfmt.get().pluginId
-val sortDependenciesPlugin: String = libs.plugins.sort.dependencies.get().pluginId
-
-allprojects {
-  apply(plugin = ktfmtPlugin)
-  extensions.configure<KtfmtExtension> {
-    googleStyle()
-    removeUnusedImports = true
-  }
+  // Applies and configures ktfmt for every project; see build-logic/.../project-config.gradle.kts
+  id("project-config")
 }
 
 // The JS yarn.lock records `fsevents` (a macOS-only optional dep of chokidar) when generated
