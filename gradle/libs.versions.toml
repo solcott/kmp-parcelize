@@ -48,7 +48,7 @@ kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref =
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 gmazzo-buildconfig = { id = "com.github.gmazzo.buildconfig", version.ref = "gmazzoBuildConfig" }
 plugin-publish = { id = "com.gradle.plugin-publish", version = "2.1.1" }
-publish = { id = "com.vanniktech.maven.publish", version = "0.36.0" }
+publish = { id = "com.vanniktech.maven.publish", version = "0.37.0" }
 
 ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
 sort-dependencies = { id = "com.squareup.sort-dependencies", version.ref = "sort-dependencies" }
