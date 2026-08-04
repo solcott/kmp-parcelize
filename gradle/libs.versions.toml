@@ -19,7 +19,7 @@ androidTargetSdk = "36"
 jvm-toolchain = "25" # After updating run ./gradlew updateDaemonJvm
 #noinspection UnusedVersionCatalogEntry
 jvm-compat = "17"
-ktfmt = "0.26.0"
+ktfmt = "0.27.0"
 sort-dependencies = "0.18.0"
 
 [libraries]
