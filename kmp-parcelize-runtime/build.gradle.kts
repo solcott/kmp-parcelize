@@ -42,8 +42,8 @@ kotlin {
       configureEach { compilerOptions { freeCompilerArgs.add("-Xexpect-actual-classes") } }
     }
     commonTest.dependencies {
-      implementation(libs.kotlinx.coroutines.test)
       implementation(libs.junit)
+      implementation(libs.kotlinx.coroutines.test)
     }
 
     all {
