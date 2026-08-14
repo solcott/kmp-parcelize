@@ -7,11 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import io.github.solcott.kmp.parcelize.sample.App
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            App()
-        }
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    enableEdgeToEdge()
+    setContent { App() }
+  }
 }
