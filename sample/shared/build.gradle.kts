@@ -15,7 +15,8 @@ plugins {
 
 kotlin {
   android { namespace = "io.github.solcott.kmp.parcelize.sample.shared" }
-
+  js { binaries.executable() }
+  wasmJs { binaries.executable() }
   sourceSets {
     commonMain.dependencies {
       implementation(libs.compose.components.resources)
