@@ -26,10 +26,21 @@ android {
   defaultConfig {
     applicationId = "io.github.solcott.kmp.parcelize.sample"
     minSdk = libs.versions.androidMinSdk.get().toInt()
+    //noinspection OldTargetApi
     targetSdk = libs.versions.androidTargetSdk.get().toInt()
     versionCode = 1
     versionName = version.toString()
   }
 
   buildFeatures { compose = true }
+
+  testOptions { unitTests { isIncludeAndroidResources = true } }
+}
+
+// Compose Preview requires unit tests (and their Android resources) for every variant.
+androidComponents {
+  beforeVariants {
+    @Suppress("UnstableApiUsage")
+    it.hostTests[com.android.build.api.variant.HostTestBuilder.UNIT_TEST_TYPE]?.enable = true
+  }
 }
