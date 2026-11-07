@@ -174,7 +174,7 @@ fun ComposeDataScreen(onSendData: (UserData) -> Unit) {
               Modifier.size(120.dp * scale)
                 .clip(RoundedCornerShape(24.dp))
                 .background(
-                  Brush.linearGradient(listOf(Color(obj.colorStartHex), Color(obj.colorEndHex)))
+                  Brush.linearGradient(listOf(Color(obj.colorStartHex), Color(obj.colorEndHex))),
                 )
                 .clickable { favoriteObject = obj },
             contentAlignment = Alignment.Center,
@@ -254,7 +254,7 @@ fun ViewDetailsScreen(userData: UserData, onModifyData: () -> Unit) {
             .height(180.dp)
             .clip(RoundedCornerShape(24.dp))
             .background(
-              Brush.linearGradient(listOf(Color(fav.colorStartHex), Color(fav.colorEndHex)))
+              Brush.linearGradient(listOf(Color(fav.colorStartHex), Color(fav.colorEndHex))),
             ),
         contentAlignment = Alignment.Center,
       ) {

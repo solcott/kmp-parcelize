@@ -26,7 +26,7 @@ class KmpParcelizePlugin : Plugin<Project> {
             api(project.dependencies.project(runtimeProject.path))
           } else {
             api(
-              "${BuildConfig.kmpParcelizeGroup}:kmp-parcelize-runtime:${BuildConfig.kmpParcelizeVersion}"
+              "${BuildConfig.kmpParcelizeGroup}:kmp-parcelize-runtime:${BuildConfig.kmpParcelizeVersion}",
             )
           }
         }

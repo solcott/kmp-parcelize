@@ -18,7 +18,7 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 tasks.withType<JavaCompile>().configureEach {
   // 'release' is the modern replacement for sourceCompatibility/targetCompatibility.
   // It guarantees both bytecode version AND standard library API bounds.
-//  options.release.set(compatVersion.toInt())
+  //  options.release.set(compatVersion.toInt())
   sourceCompatibility = compatVersion
   targetCompatibility = compatVersion
 }
