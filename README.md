@@ -138,6 +138,27 @@ A complete working example lives in the [`sample/`](sample/) directory, showing 
 - Kotlin 2.0+
 - Gradle 8.0+
 
+## Known Issues
+
+### Android Studio reports "does not provide a `CREATOR` field"
+
+Android Studio may flag `@Parcelize` classes in common code with:
+
+> This class implements `Parcelable` but does not provide a `CREATOR` field
+
+This is a false positive from the Android Lint `ParcelCreator` check, which only recognizes `kotlinx.parcelize.Parcelize` and not annotations registered through the Parcelize compiler plugin's `additionalAnnotation` option. The build still generates `CREATOR`, and command-line `lint` does not report it.
+
+To hide the warning, suppress the check on each class:
+
+```kotlin
+@Suppress("ParcelCreator")
+@Parcelize
+data class UserData(
+    val name: String,
+    val age: Int,
+) : Parcelable
+```
+
 ## License
 
 ```
