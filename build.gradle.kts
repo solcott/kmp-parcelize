@@ -21,7 +21,7 @@ plugins {
 // on macOS, but Linux CI rewrites the lock to drop it. Report the mismatch as a warning instead
 // of failing the build so the lock stays portable across macOS dev machines and Linux CI.
 plugins.withType<YarnPlugin> {
-  with(the<YarnRootExtension>()) { yarnLockMismatchReport = YarnLockMismatchReport.WARNING }
+  with(the<YarnRootExtension>()) { yarnLockMismatchReportProperty = YarnLockMismatchReport.WARNING }
 }
 
 tasks.named<UpdateDaemonJvm>("updateDaemonJvm") {
