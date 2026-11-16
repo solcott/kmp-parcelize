@@ -3,6 +3,7 @@ package io.github.solcott.kmp.parcelize.sample
 import io.github.solcott.kmp.parcelize.Parcelable
 import io.github.solcott.kmp.parcelize.Parcelize
 
+@Suppress("ParcelCreator")
 @Parcelize
 data class UserData(
   val name: String,
@@ -11,6 +12,7 @@ data class UserData(
   val favoriteObject: FavoriteObject?,
 ) : Parcelable
 
+@Suppress("ParcelCreator")
 @Parcelize
 data class FavoriteObject(
   val id: String,
