@@ -81,11 +81,10 @@ The runtime uses Kotlin's `expect`/`actual` mechanism:
 - **`commonMain`** declares `expect interface Parcelable`, `@Parcelize`, and `@IgnoreOnParcel`.
 - **`androidMain`** maps them to the real Android types via `actual typealias`:
   - `Parcelable` → `android.os.Parcelable`
-  - `Parcelize` → `kotlinx.parcelize.Parcelize`
   - `IgnoreOnParcel` → `kotlinx.parcelize.IgnoredOnParcel`
 - **All other platforms** provide empty `actual` implementations (no-ops).
 
-The Gradle plugin also passes `-P plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=io.github.solcott.kmp.parcelize.Parcelize` to the Kotlin compiler on Android targets, so the Parcelize compiler plugin recognizes the common `@Parcelize` annotation. This is still required: when common code is compiled, the compiler only sees the `expect` annotation, not the Android typealias. The typealias lets Android Lint and Android Studio recognize `@Parcelize` classes, so they don't report a false-positive `ParcelCreator` ("does not provide a `CREATOR` field") error.
+The Gradle plugin also passes `-P plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=io.github.solcott.kmp.parcelize.Parcelize` to the Kotlin compiler on Android targets, so the Parcelize compiler plugin recognizes the common `@Parcelize` annotation.
 
 ## Artifacts
 

@@ -5,6 +5,4 @@ package io.github.solcott.kmp.parcelize
  * class, it generates Parcelable implementation on Android. On other platforms, it's an empty
  * annotation.
  */
-@Target(AnnotationTarget.CLASS)
-@Retention(AnnotationRetention.BINARY)
-expect annotation class Parcelize()
+@Target(AnnotationTarget.CLASS) @Retention(AnnotationRetention.BINARY) annotation class Parcelize()
