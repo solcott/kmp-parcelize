@@ -19,6 +19,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Ensure version is not a snapshot
+        run: |
+          version=$(grep -E '^version=' gradle.properties | cut -d'=' -f2)
+          if [[ "$version" == *-SNAPSHOT ]]; then
+            echo "::error::Refusing to release SNAPSHOT version $version. Set a release version in gradle.properties."
+            exit 1
+          fi
+
       - name: Set up JDK 25
         uses: actions/setup-java@v6
         with:
