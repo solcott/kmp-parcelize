@@ -14,7 +14,21 @@ plugins {
 }
 
 kotlin {
-  android { namespace = "io.github.solcott.kmp.parcelize.runtime" }
+  android {
+    namespace = "io.github.solcott.kmp.parcelize.runtime"
+    withHostTest { isIncludeAndroidResources = true }
+    // Mirror what the Gradle plugin does so the test fixtures can use the common @Parcelize.
+    compilations.configureEach {
+      compileTaskProvider.configure {
+        compilerOptions {
+          freeCompilerArgs.addAll(
+            "-P",
+            "plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=io.github.solcott.kmp.parcelize.Parcelize",
+          )
+        }
+      }
+    }
+  }
 
   // These targets are not supported by compose multiplatform so define here instead of
   // "kmp-targets"
@@ -42,8 +56,12 @@ kotlin {
       configureEach { compilerOptions { freeCompilerArgs.add("-Xexpect-actual-classes") } }
     }
     commonTest.dependencies {
-      implementation(libs.junit)
+      implementation(libs.kotlin.test)
       implementation(libs.kotlinx.coroutines.test)
+    }
+    getByName("androidHostTest").dependencies {
+      implementation(libs.junit)
+      implementation(libs.robolectric)
     }
 
     all {

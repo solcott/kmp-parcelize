@@ -37,8 +37,8 @@ A KMP library with three source sets:
 
 | Source set | Purpose |
 |---|---|
-| `commonMain` | Expect declarations for `Parcelable`, `@Parcelize`, `@IgnoreOnParcel` |
-| `androidMain` | Typealiases to `android.os.Parcelable` and `kotlinx.parcelize.IgnoredOnParcel` |
+| `commonMain` | Expect declarations for `Parcelable`, `@Parcelize`, `@IgnoreOnParcel`, `Parcel`, `Parceler`, `@TypeParceler`, `@WriteWith` |
+| `androidMain` | Typealiases to `android.os.Parcelable`/`Parcel` and `kotlinx.parcelize.*` |
 | `nonAndroidMain` | Empty interface/annotation stubs for all other targets |
 
 ### `build-logic`

@@ -5,6 +5,7 @@ activityCompose = "1.13.0"
 kotlin = "2.4.21"
 googleDevtoolsKsp = "2.3.14"
 kotlinxCoroutinesTest = "1.11.0"
+robolectric = "4.18.1"
 composeMultiplatform = "1.12.2"
 composeMaterial3 = "1.9.0"
 composeMaterialIconsExtended = "1.7.3"
@@ -27,7 +28,9 @@ android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 ktfmt-gradle-plugin = { module = "com.ncorti.ktfmt.gradle:com.ncorti.ktfmt.gradle.gradle.plugin", version.ref = "ktfmt" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
 compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "composeMultiplatform" }

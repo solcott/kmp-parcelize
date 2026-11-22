@@ -67,6 +67,36 @@ data class UserData(
 
 On Android this maps to `kotlinx.parcelize.IgnoredOnParcel`. On other platforms it is a no-op.
 
+### Custom parcelers (`Parceler`, `@TypeParceler`, `@WriteWith`)
+
+For types that aren't `Parcelable`, write a `Parceler` in common code and point Parcelize at it with `@TypeParceler` (for a whole class or one property) or `@WriteWith` (on a single type usage):
+
+```kotlin
+import io.github.solcott.kmp.parcelize.Parcel
+import io.github.solcott.kmp.parcelize.Parcelable
+import io.github.solcott.kmp.parcelize.Parceler
+import io.github.solcott.kmp.parcelize.Parcelize
+import io.github.solcott.kmp.parcelize.TypeParceler
+import io.github.solcott.kmp.parcelize.WriteWith
+import io.ktor.http.Url
+
+object UrlParceler : Parceler<Url> {
+    override fun create(parcel: Parcel): Url = Url(parcel.readString().orEmpty())
+    override fun Url.write(parcel: Parcel, flags: Int) = parcel.writeString(toString())
+}
+
+@Parcelize
+@TypeParceler<Url, UrlParceler>
+data class Example(
+    val pdf: Url,
+    val image: @WriteWith<UrlParceler> Url,
+) : Parcelable
+```
+
+On Android these map to `kotlinx.parcelize.Parceler`, `kotlinx.parcelize.TypeParceler`, `kotlinx.parcelize.WriteWith` and `android.os.Parcel`. On other platforms the annotations are no-ops and `Parcel` can never be instantiated, so a `Parceler` is never called.
+
+The common `Parcel` exposes a subset of `android.os.Parcel`: `readString`/`writeString`, `readInt`/`writeInt`, `readLong`/`writeLong`, `readFloat`/`writeFloat`, `readDouble`/`writeDouble`, `readByte`/`writeByte`, `createByteArray`/`writeByteArray` and `dataPosition`. If you need more of the API, declare the parceler in `androidMain` instead.
+
 ## How It Works
 
 The project has two artifacts:
@@ -78,10 +108,14 @@ The project has two artifacts:
 
 The runtime uses Kotlin's `expect`/`actual` mechanism:
 
-- **`commonMain`** declares `expect interface Parcelable`, `@Parcelize`, and `@IgnoreOnParcel`.
+- **`commonMain`** declares `expect interface Parcelable`, `@Parcelize`, `@IgnoreOnParcel`, `expect class Parcel`, `expect interface Parceler`, `@TypeParceler`, and `@WriteWith`.
 - **`androidMain`** maps them to the real Android types via `actual typealias`:
   - `Parcelable` → `android.os.Parcelable`
   - `IgnoreOnParcel` → `kotlinx.parcelize.IgnoredOnParcel`
+  - `Parcel` → `android.os.Parcel`
+  - `Parceler` → `kotlinx.parcelize.Parceler`
+  - `TypeParceler` → `kotlinx.parcelize.TypeParceler`
+  - `WriteWith` → `kotlinx.parcelize.WriteWith`
 - **All other platforms** provide empty `actual` implementations (no-ops).
 
 The Gradle plugin also passes `-P plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=io.github.solcott.kmp.parcelize.Parcelize` to the Kotlin compiler on Android targets, so the Parcelize compiler plugin recognizes the common `@Parcelize` annotation.
