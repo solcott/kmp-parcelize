@@ -4,7 +4,8 @@
 [Unreleased]: https://github.com/solcott/kmp-parcelize/compare/1.0.0...HEAD
 
 Changed:
-- 
+- Snapshot builds of the next version are now published from `main` to the Maven Central
+  snapshots repository.
 
 ## [1.0.0] - 2026-04-14
 [1.0.0]: https://github.com/solcott/kmp-parcelize/releases/tag/1.0.0

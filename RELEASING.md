@@ -1,6 +1,9 @@
 # Releasing
 
-1. Update the `VERSION_NAME` in `gradle.properties` to the release version.
+Every push to `main` publishes the current `-SNAPSHOT` version to the Maven Central snapshots
+repository (see `.github/workflows/snapshot.yml`). To cut a release:
+
+1. Update `version` in `gradle.properties` to the release version (drop the `-SNAPSHOT` suffix).
 
 2. Update the `CHANGELOG.md`:
     1. Change the `Unreleased` header to the release version.
@@ -19,7 +22,7 @@
    $ git tag -am "Version X.Y.Z" X.Y.Z
    ```
 
-5. Update the `VERSION_NAME` in `gradle.properties` to the next version.
+5. Update `version` in `gradle.properties` to the next development version (e.g. `X.Y+1.0-SNAPSHOT`).
 
 6. Commit
 

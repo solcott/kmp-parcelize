@@ -1,0 +1,58 @@
+name: Snapshot
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+    env:
+      ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
+      ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
+      ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
+      ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYID }}
+      ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Check version is a snapshot
+        id: version
+        run: |
+          version=$(grep -E '^version=' gradle.properties | cut -d'=' -f2)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [[ "$version" == *-SNAPSHOT ]]; then
+            echo "snapshot=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "snapshot=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Version $version is not a SNAPSHOT; skipping snapshot publish."
+          fi
+
+      - name: Set up JDK 25
+        if: steps.version.outputs.snapshot == 'true'
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'temurin'
+          java-version: '25'
+
+      - name: Setup Gradle
+        if: steps.version.outputs.snapshot == 'true'
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Publish runtime snapshot
+        if: steps.version.outputs.snapshot == 'true'
+        run: ./gradlew :kmp-parcelize-runtime:publishAllPublicationsToMavenCentralRepository
+
+      - name: Publish plugin snapshot
+        if: steps.version.outputs.snapshot == 'true'
+        working-directory: kmp-parcelize-plugin
+        run: ../gradlew publishAllPublicationsToMavenCentralRepository
