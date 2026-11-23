@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 KMP-Parcelize is a Gradle plugin + runtime library that enables Kotlin's official Parcelize plugin for Kotlin Multiplatform (KMP) projects. On Android, classes annotated with `@Parcelize` get full `Parcelable` serialization. On all other targets (JVM, JS, WASM, Native), the annotations and interface are no-ops/stubs.
 
 - Group: `io.github.solcott`
-- Version: `1.1.0-SNAPSHOT`
+- Version: `1.1.1-SNAPSHOT`
 - Kotlin: 2.3.20 / Java toolchain: 24 / Java compatibility: 17
 
 ## Build Commands

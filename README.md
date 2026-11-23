@@ -99,7 +99,7 @@ The common `Parcel` exposes a subset of `android.os.Parcel`: `readString`/`write
 
 ## Snapshots
 
-Snapshot builds of the next version are published from `main` to the [Maven Central snapshots repository](https://central.sonatype.com/repository/maven-snapshots/). The current snapshot version is `1.1.0-SNAPSHOT`.
+Snapshot builds of the next version are published from `main` to the [Maven Central snapshots repository](https://central.sonatype.com/repository/maven-snapshots/). The current snapshot version is `1.1.1-SNAPSHOT`.
 
 Add the snapshots repository in your `settings.gradle.kts` — under `pluginManagement` for the Gradle plugin, and under `dependencyResolutionManagement` for the runtime library:
 
@@ -137,7 +137,7 @@ Then use the snapshot version:
 ```kotlin
 // build.gradle.kts
 plugins {
-    id("io.github.solcott.kmp.parcelize") version "1.1.0-SNAPSHOT"
+    id("io.github.solcott.kmp.parcelize") version "1.1.1-SNAPSHOT"
 }
 ```
 
