@@ -38,11 +38,28 @@ To cut a release:
    $ git commit -am "Prepare next development version"
    ```
 
-7. Push!
+7. Push the commits through a pull request. `main` requires one, and it must be merged with a
+   merge commit (not squash or rebase) so the tagged commit stays in `main`'s history.
 
    ```
-   $ git push && git push --tags
+   $ git push origin HEAD:release/X.Y.Z
+   $ gh pr create --base main --head release/X.Y.Z --title "Release X.Y.Z"
+   $ gh pr merge --merge --delete-branch
    ```
 
-   This will trigger a GitHub Action workflow which will create a GitHub release and upload the
-   release artifacts to Maven Central.
+8. Push the tag
+
+   ```
+   $ git push origin X.Y.Z
+   ```
+
+9. Create a GitHub release for the tag
+
+   ```
+   $ gh release create X.Y.Z --verify-tag --title X.Y.Z --notes-file notes.md
+   ```
+
+   Publishing the release triggers the Release workflow (`.github/workflows/release.yml`). It
+   uploads the runtime and plugin to Maven Central, waits for Central Portal to validate them and
+   releases them automatically, then publishes the plugin to the Gradle Plugin Portal. Artifacts
+   usually show up on Maven Central 10 to 30 minutes later.
