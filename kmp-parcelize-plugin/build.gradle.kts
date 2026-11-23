@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.DeploymentValidation
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
@@ -67,7 +68,10 @@ gradlePlugin {
 }
 
 mavenPublishing {
-  publishToMavenCentral()
+  publishToMavenCentral(
+    automaticRelease = true,
+    validateDeployment = DeploymentValidation.VALIDATED,
+  )
 
   signAllPublications()
 

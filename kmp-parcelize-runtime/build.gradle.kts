@@ -1,5 +1,6 @@
 @file:OptIn(ExperimentalKotlinGradlePluginApi::class, ExperimentalWasmDsl::class)
 
+import com.vanniktech.maven.publish.DeploymentValidation
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
@@ -74,7 +75,10 @@ kotlin {
 }
 
 mavenPublishing {
-  publishToMavenCentral()
+  publishToMavenCentral(
+    automaticRelease = true,
+    validateDeployment = DeploymentValidation.VALIDATED,
+  )
 
   signAllPublications()
 
