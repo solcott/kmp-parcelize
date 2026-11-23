@@ -1,6 +1,17 @@
 # Releasing
 
-1. Update the `VERSION_NAME` in `gradle.properties` to the release version.
+After the Build workflow passes on a push to `main`, the current `-SNAPSHOT` version is published
+to the Maven Central snapshots repository (see `.github/workflows/snapshot.yml`).
+
+Both workflows read repository secrets (Settings > Secrets and variables > Actions):
+`ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME`, `ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD`,
+`ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY`, `ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYID`,
+`ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD`, plus `GRADLE_PUBLISH_KEY` and
+`GRADLE_PUBLISH_SECRET` for releases.
+
+To cut a release:
+
+1. Update `version` in `gradle.properties` to the release version (drop the `-SNAPSHOT` suffix).
 
 2. Update the `CHANGELOG.md`:
     1. Change the `Unreleased` header to the release version.
@@ -19,7 +30,7 @@
    $ git tag -am "Version X.Y.Z" X.Y.Z
    ```
 
-5. Update the `VERSION_NAME` in `gradle.properties` to the next version.
+5. Update `version` in `gradle.properties` to the next development version (e.g. `X.Y+1.0-SNAPSHOT`).
 
 6. Commit
 

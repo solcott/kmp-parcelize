@@ -97,6 +97,53 @@ On Android these map to `kotlinx.parcelize.Parceler`, `kotlinx.parcelize.TypePar
 
 The common `Parcel` exposes a subset of `android.os.Parcel`: `readString`/`writeString`, `readInt`/`writeInt`, `readLong`/`writeLong`, `readFloat`/`writeFloat`, `readDouble`/`writeDouble`, `readByte`/`writeByte`, `createByteArray`/`writeByteArray` and `dataPosition`. If you need more of the API, declare the parceler in `androidMain` instead.
 
+## Snapshots
+
+Snapshot builds of the next version are published from `main` to the [Maven Central snapshots repository](https://central.sonatype.com/repository/maven-snapshots/). The current snapshot version is `1.1.0-SNAPSHOT`.
+
+Add the snapshots repository in your `settings.gradle.kts` — under `pluginManagement` for the Gradle plugin, and under `dependencyResolutionManagement` for the runtime library:
+
+```kotlin
+// settings.gradle.kts
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven("https://central.sonatype.com/repository/maven-snapshots/") {
+            mavenContent {
+                snapshotsOnly()
+                includeGroupByRegex("io\\.github\\.solcott.*")
+            }
+        }
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://central.sonatype.com/repository/maven-snapshots/") {
+            mavenContent {
+                snapshotsOnly()
+                includeGroupByRegex("io\\.github\\.solcott.*")
+            }
+        }
+    }
+}
+```
+
+Then use the snapshot version:
+
+```kotlin
+// build.gradle.kts
+plugins {
+    id("io.github.solcott.kmp.parcelize") version "1.1.0-SNAPSHOT"
+}
+```
+
+> [!WARNING]
+> Snapshots are unstable development builds and can change at any time. Gradle caches changing modules for 24 hours by default; run with `--refresh-dependencies` to pick up the latest snapshot immediately.
+
 ## How It Works
 
 The project has two artifacts:
