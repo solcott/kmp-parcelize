@@ -1,7 +1,7 @@
 # Releasing
 
-Every push to `main` publishes the current `-SNAPSHOT` version to the Maven Central snapshots
-repository (see `.github/workflows/snapshot.yml`).
+After the Build workflow passes on a push to `main`, the current `-SNAPSHOT` version is published
+to the Maven Central snapshots repository (see `.github/workflows/snapshot.yml`).
 
 Both workflows read repository secrets (Settings > Secrets and variables > Actions):
 `ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME`, `ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD`,

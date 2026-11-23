@@ -1,7 +1,10 @@
 name: Snapshot
 
 on:
-  push:
+  # Publish only after the Build workflow has passed for a push to main.
+  workflow_run:
+    workflows: [ Build ]
+    types: [ completed ]
     branches: [ main ]
   workflow_dispatch:
 
@@ -11,6 +14,10 @@ concurrency:
 
 jobs:
   snapshot:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -23,6 +30,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          # For workflow_run, publish the exact commit Build verified, not the latest main.
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Check version is a snapshot
         id: version
