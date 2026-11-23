@@ -1,7 +1,15 @@
 # Releasing
 
 Every push to `main` publishes the current `-SNAPSHOT` version to the Maven Central snapshots
-repository (see `.github/workflows/snapshot.yml`). To cut a release:
+repository (see `.github/workflows/snapshot.yml`).
+
+Both workflows read repository secrets (Settings > Secrets and variables > Actions):
+`ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME`, `ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD`,
+`ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY`, `ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYID`,
+`ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD`, plus `GRADLE_PUBLISH_KEY` and
+`GRADLE_PUBLISH_SECRET` for releases.
+
+To cut a release:
 
 1. Update `version` in `gradle.properties` to the release version (drop the `-SNAPSHOT` suffix).
 
